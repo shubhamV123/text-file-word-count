@@ -3,14 +3,21 @@ const axios = require('axios');
 const app = express();
 const cors = require('cors');
 const path = require('path');
-//middleware
-app.use(cors());
 const {
     sortByCount,
     splitByWords,
     wordMap,
     filterData
-} = require('./server/methods')
+} = require('./server/methods');
+//middleware
+app.use(cors());
+const root = require('path').join(__dirname, 'client', 'build')
+app.use(express.static(root));
+app.get("*", (req, res) => {
+    res.sendFile('index.html', { root });
+})
+
+
 
 app.get('/:id', async (req, res) => {
     try {
