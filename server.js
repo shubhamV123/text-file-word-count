@@ -11,15 +11,10 @@ const {
 } = require('./server/methods');
 //middleware
 app.use(cors());
-// const root = require('path').join(__dirname, 'client', 'build')
-// app.use(express.static(root));
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// app.get("*", (req, res) => {
-//     console.log(__dirname, path.join(__dirname, 'client', 'build'))
-//     const index = path.join(__dirname, 'client', 'build', 'index.html');
-//     res.sendFile(index);
-// })
+
 
 
 
