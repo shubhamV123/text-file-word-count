@@ -12,7 +12,6 @@ const {
 //middleware
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 
@@ -34,16 +33,6 @@ app.get('/:id', async (req, res) => {
         res.status(500).send('Something broke!')
     }
 });
-// Anything that doesn't match the above, send back the index.html file
-// app.get('*', (req, res) => {
-//     console.log("Test")
-//     res.sendFile(path.join(__dirname + '/client/build/index.html'));
-// });
-// app.get("*", (req, res) => {
-//     console.log(__dirname, path.join(__dirname, 'client', 'build'))
-//     const index = path.join(__dirname, 'client', 'build', 'index.html');
-//     res.sendFile(index);
-// })
 
 // Choose the port and start the server
 const PORT = process.env.PORT || 5000
