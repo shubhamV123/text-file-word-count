@@ -11,13 +11,16 @@ const {
 } = require('./server/methods');
 //middleware
 app.use(cors());
-const root = require('path').join(__dirname, 'client', 'build')
-app.use(express.static(root));
-app.get("*", (req, res) => {
-    console.log(__dirname, path.join(__dirname, 'client', 'build'))
-    const index = path.join(__dirname, 'client', 'build', 'index.html');
-    res.sendFile(index);
-})
+// const root = require('path').join(__dirname, 'client', 'build')
+// app.use(express.static(root));
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// app.get("*", (req, res) => {
+//     console.log(__dirname, path.join(__dirname, 'client', 'build'))
+//     const index = path.join(__dirname, 'client', 'build', 'index.html');
+//     res.sendFile(index);
+// })
+
 
 
 
@@ -38,8 +41,8 @@ app.get('/:id', async (req, res) => {
 });
 // Anything that doesn't match the above, send back the index.html file
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'))
-})
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 
 // Choose the port and start the server
 const PORT = process.env.PORT || 5000
