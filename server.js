@@ -14,7 +14,8 @@ app.use(cors());
 const root = require('path').join(__dirname, 'client', 'build')
 app.use(express.static(root));
 app.get("*", (req, res) => {
-    const index = path.join(__dirname, 'build', 'index.html');
+    console.log(__dirname, path.join(__dirname, 'client', 'build'))
+    const index = path.join(__dirname, 'client', 'build', 'index.html');
     res.sendFile(index);
 })
 
